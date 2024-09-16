@@ -1,5 +1,5 @@
-import dotnev from "dotenv";
 import mongoose from "mongoose";
+import dotnev from "dotenv";
 dotnev.config();
 export const connectDB = async () => {
   try {

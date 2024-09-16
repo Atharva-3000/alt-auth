@@ -3,7 +3,7 @@
 
 - [x] INIT
 - [x] Databse setup
-- [] Signup endpoint
+- [x] Signup endpoint
 - [] Verify account 'email' mail
 - [] Verify email endpoint
 - [] Welcome emails mock screen
