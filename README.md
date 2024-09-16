@@ -4,12 +4,12 @@
 - [x] INIT
 - [x] Databse setup
 - [x] Signup endpoint
-- [] Verify account 'email' mail
-- [] Verify email endpoint
-- [] Welcome emails mock screen
-- [] Log-out endpoint
-- [] Log-in endpoint
-- [] Forgot password endpoint
+- [x] Verify account 'email' mail
+- [x] Verify email endpoint
+- [x] Welcome emails mock screen
+- [x] Log-out endpoint
+- [x] Log-in endpoint
+- [x] Forgot password endpoint
 - [] Reset password endpoint
 - [] Check auth endpoint
 - [] Frontend setup
