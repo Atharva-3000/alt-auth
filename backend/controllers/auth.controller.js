@@ -5,17 +5,23 @@ import {
   sendPasswordResetEmail,
   sendVerificationEmail,
   sendWelcomeEmail,
-  sendResetSuccessEmail
+  sendResetSuccessEmail,
 } from "../mailtrap/emails.js";
 import crypto from "crypto";
 import dotenv from "dotenv";
+import unkey from "../utils/rateLimit.js";
 dotenv.config();
 
 // signup endpoint
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;
-
+  const rateLimit = await unkey.limit(email);
+  
+  if (!rateLimit.success) {
+    console.log("rate limited try again after 5 minutes");
+    return res.status(429).json({ message: "You have been rate Limited" });
+  }
   try {
     if (!email || !password || !name) {
       throw new error("All fields are required");
@@ -148,6 +154,12 @@ export const forgotPassword = async (req, res) => {
       return res
         .status(404)
         .json({ success: false, message: "User not found" });
+    }
+    const rateLimit = await unkey.limit(email);
+
+    if (!rateLimit.success) {
+      console.log("rate limited try again after 5 minutes");
+      return res.status(429).json({ message: "You have been rate Limited" });
     }
     // getting a new token
     const resetToken = crypto.randomBytes(32).toString("hex");
